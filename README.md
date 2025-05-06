@@ -9,7 +9,7 @@ This repository contains Postman tests and Swagger documentation for practicing 
 
 ## Getting Started
 
-1. Clone the repo: https://github.com/juba97/postman-swagger.git
+  Clone the repo: https://github.com/juba97/postman-swagger.git
 
 1. **Go to Swagger Petstore UI**:
    - Visit the following URL: [Swagger Petstore UI](https://petstore.swagger.io)
