@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "8f3a37d5-5aa8-41be-be06-a75662b2ff59",
+		"_postman_id": "ae65ef96-0580-46b1-aea3-d1010585d5b7",
 		"name": "Reqres API Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "44473727-8f3a37d5-5aa8-41be-be06-a75662b2ff59"
+		"_uid": "44473727-ae65ef96-0580-46b1-aea3-d1010585d5b7"
 	},
 	"item": [
 		{
@@ -65,11 +65,11 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "a3e5af01-5c07-4c16-b356-fc5533d5d56c"
+						"id": "31f28673-e4d8-4884-9860-00218d52dde1"
 					}
 				}
 			],
-			"id": "42fbfc24-15f9-4294-8fa9-5469e23b0f73",
+			"id": "93b6f348-4908-4e8d-8d45-b5458247d367",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -105,11 +105,11 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "024bb9e8-e6b6-4f99-b6f9-3af1f209e100"
+						"id": "d6ce326b-50a9-4958-9ef8-30373f499df9"
 					}
 				}
 			],
-			"id": "d91b97c8-8bee-4e4f-9096-05fb3c28a12c",
+			"id": "7c565f3a-025d-4d7d-a62e-a2fdd6331a5c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -152,7 +152,7 @@
 		},
 		{
 			"name": "Single User NOT Found",
-			"id": "d37c7681-492c-40b3-9398-0c76e14923e1",
+			"id": "3d4acd60-05df-4a32-b660-cee711908574",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -183,7 +183,7 @@
 		},
 		{
 			"name": "List <RESOURCE>",
-			"id": "ae8ef8a2-f8ee-4d34-a09d-4e8d5b6a55d0",
+			"id": "07d0f8b0-918b-4e46-ad72-188f6d942ed2",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -207,7 +207,7 @@
 		},
 		{
 			"name": "Single <RESOURCE>",
-			"id": "996eca7f-05fd-46d8-ad7e-c969875d95ac",
+			"id": "bf0c9274-7c07-4dfa-a329-5b9c81f3073f",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -250,11 +250,11 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "df121251-51cf-4257-868a-11b03cf52ebb"
+						"id": "ad087b4f-abe8-4fc5-bfdf-bfb48e643884"
 					}
 				}
 			],
-			"id": "742bbc51-b152-4009-8298-08c46531b2e9",
+			"id": "3897e7fd-446a-4403-a744-073eefe24e02",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -311,11 +311,11 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "123b3f4b-cfc5-468a-9a25-04a23863eb8e"
+						"id": "ddfaf48f-ed30-49d9-9a5a-4b33a9b431fc"
 					}
 				}
 			],
-			"id": "d4b88e41-bd0e-45cd-b860-33529e63e6f4",
+			"id": "7a010d09-2804-4dfb-a271-4321c4048aa5",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -372,11 +372,11 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "03c18464-0b4c-489c-9d20-c4cd812e6258"
+						"id": "7f055c5c-8422-4d60-b4f9-e6e4d3ca74cd"
 					}
 				}
 			],
-			"id": "004d5df5-17e9-4a75-8f1a-afc40b880b7f",
+			"id": "53a13c03-1138-4e36-b050-d431f164b2b6",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -432,11 +432,11 @@
 						],
 						"type": "text/javascript",
 						"packages": {},
-						"id": "f5da459f-5e90-4294-9057-95593e3ef289"
+						"id": "0c7a53e1-38e5-43d5-b6ed-33aa384b6457"
 					}
 				}
 			],
-			"id": "a7d0adf9-3c2d-46ef-bd7c-e24dfb6ca768",
+			"id": "d656351d-fb53-4eba-887f-d5b3978bd09b",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -467,7 +467,7 @@
 		},
 		{
 			"name": "Register - Successful",
-			"id": "8964a6d4-fabc-461f-8739-a05e61998472",
+			"id": "ac7340fd-d9df-4d2a-938e-45684c1f9a7e",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -506,7 +506,7 @@
 		},
 		{
 			"name": "Register - Unsuccessful",
-			"id": "210f4221-e04f-4a37-8c1d-5568900a0873",
+			"id": "b47a2613-070d-418e-a19d-d9d1c6425f9a",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -545,7 +545,7 @@
 		},
 		{
 			"name": "Login - Successful",
-			"id": "92b0faf6-831d-484b-9696-809bfa256e65",
+			"id": "b4ef6c51-5b29-491a-9705-a2c02c24a6ce",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -584,7 +584,7 @@
 		},
 		{
 			"name": "Login - Unsuccessful",
-			"id": "585a1d46-a7ce-47af-9da3-964d68166e76",
+			"id": "a27c1510-5bbf-4f3b-9740-ae35abdac010",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -623,7 +623,7 @@
 		},
 		{
 			"name": "Delayed Response",
-			"id": "ab771590-c23f-447d-9188-3482675ec000",
+			"id": "2f0b5e4c-770a-4662-b854-dfd775140919",
 			"request": {
 				"auth": {
 					"type": "noauth"
