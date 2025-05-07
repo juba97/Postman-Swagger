@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "9c95c1eb-afab-4105-aa1d-e802474216d4",
+		"_postman_id": "8f3a37d5-5aa8-41be-be06-a75662b2ff59",
 		"name": "Reqres API Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "44473727",
-		"_collection_link": "https://juba-4080574.postman.co/workspace/Juba's-Workspace~ffada526-6aad-4d20-8873-b19ea055deaf/collection/44473727-9c95c1eb-afab-4105-aa1d-e802474216d4?action=share&source=collection_link&creator=44473727"
+		"_uid": "44473727-8f3a37d5-5aa8-41be-be06-a75662b2ff59"
 	},
 	"item": [
 		{
@@ -65,10 +64,12 @@
 							""
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"id": "a3e5af01-5c07-4c16-b356-fc5533d5d56c"
 					}
 				}
 			],
+			"id": "42fbfc24-15f9-4294-8fa9-5469e23b0f73",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -103,10 +104,12 @@
 							""
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"id": "024bb9e8-e6b6-4f99-b6f9-3af1f209e100"
 					}
 				}
 			],
+			"id": "d91b97c8-8bee-4e4f-9096-05fb3c28a12c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -149,6 +152,7 @@
 		},
 		{
 			"name": "Single User NOT Found",
+			"id": "d37c7681-492c-40b3-9398-0c76e14923e1",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -179,6 +183,7 @@
 		},
 		{
 			"name": "List <RESOURCE>",
+			"id": "ae8ef8a2-f8ee-4d34-a09d-4e8d5b6a55d0",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -202,6 +207,7 @@
 		},
 		{
 			"name": "Single <RESOURCE>",
+			"id": "996eca7f-05fd-46d8-ad7e-c969875d95ac",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -243,10 +249,12 @@
 							""
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"id": "df121251-51cf-4257-868a-11b03cf52ebb"
 					}
 				}
 			],
+			"id": "742bbc51-b152-4009-8298-08c46531b2e9",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -302,10 +310,12 @@
 							""
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"id": "123b3f4b-cfc5-468a-9a25-04a23863eb8e"
 					}
 				}
 			],
+			"id": "d4b88e41-bd0e-45cd-b860-33529e63e6f4",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -361,10 +371,12 @@
 							""
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"id": "03c18464-0b4c-489c-9d20-c4cd812e6258"
 					}
 				}
 			],
+			"id": "004d5df5-17e9-4a75-8f1a-afc40b880b7f",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -419,10 +431,12 @@
 							""
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"id": "f5da459f-5e90-4294-9057-95593e3ef289"
 					}
 				}
 			],
+			"id": "a7d0adf9-3c2d-46ef-bd7c-e24dfb6ca768",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -453,6 +467,7 @@
 		},
 		{
 			"name": "Register - Successful",
+			"id": "8964a6d4-fabc-461f-8739-a05e61998472",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -491,6 +506,7 @@
 		},
 		{
 			"name": "Register - Unsuccessful",
+			"id": "210f4221-e04f-4a37-8c1d-5568900a0873",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -529,6 +545,7 @@
 		},
 		{
 			"name": "Login - Successful",
+			"id": "92b0faf6-831d-484b-9696-809bfa256e65",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -567,6 +584,7 @@
 		},
 		{
 			"name": "Login - Unsuccessful",
+			"id": "585a1d46-a7ce-47af-9da3-964d68166e76",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -605,6 +623,7 @@
 		},
 		{
 			"name": "Delayed Response",
+			"id": "ab771590-c23f-447d-9188-3482675ec000",
 			"request": {
 				"auth": {
 					"type": "noauth"
