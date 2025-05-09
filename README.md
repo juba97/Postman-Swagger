@@ -4,8 +4,8 @@ This repository contains Postman tests and Swagger documentation for practicing 
 
 ## Structure
 
-- `/postman/` – Postman collection with test scripts
-- `/swagger/` – OpenAPI (YAML) documentation
+- `/postman/` – Contains Postman collections for API testing with test scripts.
+- `/swagger/` –  Contains Swagger API documentation.
 
 ## Getting Started
 
