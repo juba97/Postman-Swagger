@@ -29,7 +29,7 @@ For example:
 GET {{baseUrl}}/orders/{{order_id}}
 ```
 
-## Getting Started
+## 🌍 How to Use Swagger
 
   Clone the repo: https://github.com/juba97/postman-swagger.git
 
