@@ -1,0 +1,21 @@
+{
+	"id": "5a31f175-3ae6-4946-ab6d-60ca83a84ff2",
+	"name": "Simple book Environments",
+	"values": [
+		{
+			"key": "order_id",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "bookId",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-05-10T11:20:19.290Z",
+	"_postman_exported_using": "Postman/11.44.6"
+}
