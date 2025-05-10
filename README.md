@@ -25,9 +25,9 @@ This repository contains Postman tests and Swagger documentation for practicing 
 Instead of hardcoding values, use environment variables in your requests.  
 For example:
 
-``http
+```http
 GET {{baseUrl}}/orders/{{order_id}}
-``
+```
 
 ## 🌍 How to Use Swagger
 
