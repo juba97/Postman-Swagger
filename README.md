@@ -6,6 +6,27 @@ This repository contains Postman tests and Swagger documentation for practicing 
 
 - `/postman/` – Contains Postman collections for API testing with test scripts.
 - `/swagger/` –  Contains Swagger API documentation.
+- `/environments/` - Contains environment configuration files for Postman.
+
+  ## 🌍 How to Use Postman Environment
+
+### 📥 Import the Environment
+
+1. Go to Postman → ⚙️ (Settings) → **Environments**
+2. Click **Import**
+3. Select the file: `environment file` from `/environments/`
+
+### ✅ Select the Environment
+
+- Choose the imported environment from the **Environment dropdown** in the top-right corner of the Postman app
+
+### 🧪 Use Variables in Requests
+
+Instead of hardcoding values, use environment variables in your requests.  
+For example:
+
+```http
+GET {{baseUrl}}/orders/{{order_id}}
 
 ## Getting Started
 
