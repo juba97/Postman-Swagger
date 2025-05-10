@@ -12,7 +12,7 @@ This repository contains Postman tests and Swagger documentation for practicing 
 
 ### 📥 Import the Environment
 
-1. Go to Postman → ⚙️ (Settings) → **Environments**
+1. Go to Postman → (Settings) → **Environments**
 2. Click **Import**
 3. Select the file: `environment file` from `/environments/`
 
