@@ -27,6 +27,7 @@ For example:
 
 ```http
 GET {{baseUrl}}/orders/{{order_id}}
+```
 
 ## Getting Started
 
