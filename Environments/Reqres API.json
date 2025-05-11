@@ -1,0 +1,21 @@
+{
+	"id": "3b428100-8ef6-4fc9-afeb-d292f3bf7438",
+	"name": "Reqres API",
+	"values": [
+		{
+			"key": "id",
+			"value": "2",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ids",
+			"value": "23",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-05-11T11:52:17.297Z",
+	"_postman_exported_using": "Postman/11.44.6"
+}
