@@ -1,5 +1,6 @@
 openapi: 3.0.3
 info:
+
   title: Reqres API
   description: API for managing users and resources, as defined in the Reqres API Collection.
   version: 1.0.0
