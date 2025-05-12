@@ -3,7 +3,6 @@
 	"name": "Reqres API",
 	"values": [
 		{
-			
 			"key": "id",
 			"value": "2",
 			"type": "default",
