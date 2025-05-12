@@ -7,6 +7,43 @@ This repository contains Postman tests and Swagger documentation for practicing 
 - `/postman/` – Contains Postman collections for API testing with test scripts.
 - `/swagger/` –  Contains Swagger API documentation.
 - `/environments/` - Contains environment configuration files for Postman.
+- `/newman-reports/` – Contains Newman HTML test reports generated from Postman collections.
+
+## 📊 How to Use Newman Reporter
+
+### 📦 Install Dependencies
+
+Before running tests with HTML reporting, install the required tools globally:
+
+```bash
+npm install -g newman newman-reporter-htmlextra
+```
+
+---
+
+### 🚀 Run the Tests with Report
+
+To generate a Newman HTML report using the `htmlextra` reporter:
+
+```bash
+newman run ./postman/YourCollection.postman_collection.json ^
+  -e ./environments/YourEnv.postman_environment.json ^
+  -r cli,htmlextra ^
+  --reporter-htmlextra-export ./newman/report.html
+```
+
+- `-e` – Specify the environment file
+- `-r cli,htmlextra` – Run CLI output + HTML report
+- `--reporter-htmlextra-export` – Export the HTML file to `/newman/`
+
+---
+
+### 🌐 View the Report
+
+1. Navigate to the `/newman/` folder
+2. Open `report.html` in any browser to view the detailed test results
+
+---
 
   ## 🌍 How to Use Postman Environment
 
@@ -28,6 +65,8 @@ For example:
 ```http
 GET {{baseUrl}}/orders/{{order_id}}
 ```
+
+---
 
 ## 🌍 How to Use Swagger
 
