@@ -67,7 +67,6 @@ GET {{baseUrl}}/orders/{{order_id}}
 ```
 
 ---
-
 ## 🌍 How to Use Swagger
 
   Clone the repo: https://github.com/juba97/postman-swagger.git
