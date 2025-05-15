@@ -21,7 +21,7 @@ You must have `Node.js` and `json-server` installed globally.
 ```bash
 npm install -g json-server
 json-server --watch data/file 
-
+```
 ---
 
 ## 📊 How to Use Newman Reporter
