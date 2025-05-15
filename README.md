@@ -32,7 +32,8 @@ Before running tests with HTML reporting, install the required tools globally:
 
 ```bash
 npm install -g newman
-newman run collection.json -r htmlextra
+npm install -g newman-reporter-htmlextra
+newman -v
 ```
 
 ---
@@ -42,10 +43,7 @@ newman run collection.json -r htmlextra
 To generate a Newman HTML report using the `htmlextra` reporter:
 
 ```bash
-newman run ./postman/YourCollection.postman_collection.json ^
-  -e ./environments/YourEnv.postman_environment.json ^
-  -r cli,htmlextra ^
-  --reporter-htmlextra-export ./newman/report.html
+newman run <collection-file>.json -r htmlextra
 ```
 
 - `-e` – Specify the environment file
