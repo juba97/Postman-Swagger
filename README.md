@@ -32,6 +32,7 @@ Before running tests with HTML reporting, install the required tools globally:
 
 ```bash
 npm install -g newman newman-reporter-htmlextra
+newman run Students.json -r htmlextra
 ```
 
 ---
