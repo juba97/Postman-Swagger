@@ -10,7 +10,7 @@ This repository contains Postman tests and Swagger documentation for practicing 
 - `/newman-reports/` – Contains Newman HTML test reports generated from Postman collections.
 - `/data/` - This folder contains mock data used to simulate a RESTful API for testing and documentation purposes.
 
-# ▶️ How to Run json-server From the data folder
+# How to Run json-server From the data folder
 
 ## ✅ Prerequisites
 
