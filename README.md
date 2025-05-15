@@ -8,6 +8,21 @@ This repository contains Postman tests and Swagger documentation for practicing 
 - `/swagger/` –  Contains Swagger API documentation.
 - `/environments/` - Contains environment configuration files for Postman.
 - `/newman-reports/` – Contains Newman HTML test reports generated from Postman collections.
+- `/data/` - This folder contains mock data used to simulate a RESTful API for testing and documentation purposes.
+
+# ▶️ How to Run json-server From the data folder
+
+## ✅ Prerequisites
+
+You must have `Node.js` and `json-server` installed globally.
+
+### Install json-server (if not already installed)
+
+```bash
+npm install -g json-server
+json-server --watch data/file 
+
+---
 
 ## 📊 How to Use Newman Reporter
 
