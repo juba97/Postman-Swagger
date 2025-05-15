@@ -31,7 +31,8 @@ json-server data/file
 Before running tests with HTML reporting, install the required tools globally:
 
 ```bash
-npm install -g newman newman-reporter-htmlextra
+npm install -g newman
+newman-reporter-htmlextra
 newman run file.json -r htmlextra
 ```
 
