@@ -20,7 +20,7 @@ You must have `Node.js` and `json-server` installed globally.
 
 ```bash
 npm install -g json-server
-json-server data/file 
+json-server data/file.json
 ```
 ---
 
