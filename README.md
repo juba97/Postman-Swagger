@@ -12,7 +12,7 @@ This repository contains Postman tests and Swagger documentation for practicing 
 
 # How to Run json-server From the data folder
 
-## ✅ Prerequisites
+## Prerequisites
 
 You must have `Node.js` and `json-server` installed globally.
 
@@ -24,9 +24,9 @@ json-server data/file.json
 ```
 ---
 
-## 📊 How to Use Newman Reporter
+##  How to Use Newman Reporter
 
-### 📦 Install Dependencies
+###  Install Dependencies
 
 Before running tests with HTML reporting, install the required tools globally:
 
@@ -38,7 +38,7 @@ newman -v
 
 ---
 
-### 🚀 Run the Tests with Report
+###  Run the Tests with Report
 
 To generate a Newman HTML report using the `htmlextra` reporter:
 
@@ -52,26 +52,26 @@ newman run <collection-file>.json -r htmlextra
 
 ---
 
-### 🌐 View the Report
+###  View the Report
 
 1. Navigate to the `/newman/` folder
 2. Open `report.html` in any browser to view the detailed test results
 
 ---
 
-  ## 🌍 How to Use Postman Environment
+  ##  How to Use Postman Environment
 
-### 📥 Import the Environment
+###  Import the Environment
 
 1. Go to Postman → (Settings) → **Environments**
 2. Click **Import**
 3. Select the file: `environment file` from `/environments/`
 
-### ✅ Select the Environment
+###  Select the Environment
 
 - Choose the imported environment from the **Environment dropdown** in the top-right corner of the Postman app
 
-### 🧪 Use Variables in Requests
+###  Use Variables in Requests
 
 Instead of hardcoding values, use environment variables in your requests.  
 For example:
@@ -82,7 +82,7 @@ GET {{baseUrl}}/orders/{{order_id}}
 
 ---
 
-## 🌍 How to Use Swagger
+##  How to Use Swagger
 
   Clone the repo: https://github.com/juba97/postman-swagger.git
 
