@@ -1,0 +1,21 @@
+{
+	"id": "624b1eb4-d49a-4257-b760-880cc698e576",
+	"name": "CRUD",
+	"values": [
+		{
+			"key": "url_env",
+			"value": "https://api.restful-api.dev",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Object_env",
+			"value": "1",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-05-18T20:41:56.360Z",
+	"_postman_exported_using": "Postman/11.45.6"
+}
