@@ -1,0 +1,124 @@
+openapi: 3.0.1
+info:
+  title: GorestAPI
+  description: ''
+  version: 1.0.0
+tags: []
+paths:
+  /public/v2/users:
+    post:
+      summary: Create user
+      deprecated: false
+      description: ''
+      tags: []
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                gender:
+                  type: string
+                email:
+                  type: string
+                status:
+                  type: string
+              required:
+                - name
+                - gender
+                - email
+                - status
+            example:
+              name: '{{username}}'
+              gender: male
+              email: '{{useremail}}'
+              status: inactive
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+      security: []
+  /public/v2/users/userId:
+    get:
+      summary: Get user details
+      deprecated: false
+      description: ''
+      tags: []
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+      security: []
+    put:
+      summary: Update user
+      deprecated: false
+      description: ''
+      tags: []
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                status:
+                  type: string
+              required:
+                - name
+                - email
+                - status
+            example:
+              name: '{{username}}'
+              email: '{{useremail}}'
+              status: active
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+      security: []
+    delete:
+      summary: Delete user
+      deprecated: false
+      description: ''
+      tags: []
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+          headers: {}
+      security: []
+components:
+  schemas: {}
+  securitySchemes: {}
+servers:
+  - url: https://gorest.co.in
+    description: GorestAPI
+security: []
