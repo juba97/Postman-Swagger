@@ -1,0 +1,39 @@
+{
+	"id": "7dcf21b5-bd23-4d12-ae7e-3305a4242292",
+	"name": "GorestAPI",
+	"values": [
+		{
+			"key": "useremail",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "username",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "userId",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "useremail_env",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "username_env",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-05-19T19:09:51.054Z",
+	"_postman_exported_using": "Postman/11.46.1"
+}
