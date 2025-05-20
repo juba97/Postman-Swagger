@@ -64,7 +64,6 @@ paths:
           headers: {}
       security: []
     put:
-    
       summary: Update user
       deprecated: false
       description: ''
