@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "8bff5d3a-707c-4534-8ac3-e425075dc819",
+		"name": "StudentsAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44473727",
+		"_collection_link": "https://juba-4080574.postman.co/workspace/Juba's-Workspace~ffada526-6aad-4d20-8873-b19ea055deaf/collection/44473727-8bff5d3a-707c-4534-8ac3-e425075dc819?action=share&source=collection_link&creator=44473727"
+	},
+	"item": [
+		{
+			"name": "Get single student",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful Get request\", () => \r",
+							"    {\r",
+							"        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"    });\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", () => \r",
+							"    {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie 'language' is present\", () => \r",
+							"{\r",
+							"    pm.expect(pm.cookies.has(\"language\")).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie language has value 1\", () => {\r",
+							"    pm.expect(pm.cookies.get('language')).to.eql('en-gb');\r",
+							"}) \r",
+							"\r",
+							"pm.test(\"Response time is lees then 50ms\", () => {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(50);\r",
+							"})\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.test(\"Test data type of the response\", () => {\r",
+							"    pm.expect(jsonData).to.be.an('object');\r",
+							"    pm.expect(jsonData.id).to.be.a('string');\r",
+							"    pm.expect(jsonData.name).to.be.a('string');\r",
+							"    pm.expect(jsonData.subjects).to.be.a('array');\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Test array properties\", () => {\r",
+							"    pm.expect(jsonData.subjects).to.members(['IT', 'Finance', 'Engineer']);\r",
+							"})\r",
+							"\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"name\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"age\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"grade\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"subjects\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"id\",\r",
+							"    \"name\",\r",
+							"    \"age\",\r",
+							"    \"grade\",\r",
+							"    \"subjects\"\r",
+							"  ]\r",
+							"} \r",
+							"\r",
+							"pm.test('Schema is valid', function () {\r",
+							"    pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/students/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all students",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful Get request\", () => \r",
+							"    {\r",
+							"        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"    });\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", () => \r",
+							"    {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie 'language' is present\", () => \r",
+							"{\r",
+							"    pm.expect(pm.cookies.has(\"language\")).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie language has value 1\", () => {\r",
+							"    pm.expect(pm.cookies.get('language')).to.eql('en-gb');\r",
+							"}) \r",
+							"\r",
+							"pm.test(\"Response time is lees then 50ms\", () => {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(50);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful Get request\", () => \r",
+							"    {\r",
+							"        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"    });\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", () => \r",
+							"    {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie 'language' is present\", () => \r",
+							"{\r",
+							"    pm.expect(pm.cookies.has(\"language\")).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie language has value 1\", () => {\r",
+							"    pm.expect(pm.cookies.get('language')).to.eql('en-gb');\r",
+							"}) \r",
+							"\r",
+							"pm.test(\"Response time is lees then 100ms\", () => {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(100);\r",
+							"})\r",
+							"\r",
+							"var jsonData  = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"id\", jsonData.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Maria Anders\",\r\n        \"age\": 25,\r\n        \"grade\": \"10th\",\r\n        \"subjects\": [\r\n            \"IT\",\r\n            \"Finance\",\r\n            \"Engineer\"\r\n        ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update student (PATCH)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful Get request\", () => \r",
+							"    {\r",
+							"        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"    });\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", () => \r",
+							"    {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie 'language' is present\", () => \r",
+							"{\r",
+							"    pm.expect(pm.cookies.has(\"language\")).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie language has value 1\", () => {\r",
+							"    pm.expect(pm.cookies.get('language')).to.eql('en-gb');\r",
+							"}) \r",
+							"\r",
+							"pm.test(\"Response time is lees then 50ms\", () => {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(50);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Ana Trujillo\",\r\n        \"age\": 44,\r\n        \"grade\": \"16th\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/students/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful Get request\", () => \r",
+							"    {\r",
+							"        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"    });\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", () => \r",
+							"    {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie 'language' is present\", () => \r",
+							"{\r",
+							"    pm.expect(pm.cookies.has(\"language\")).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie language has value 1\", () => {\r",
+							"    pm.expect(pm.cookies.get('language')).to.eql('en-gb');\r",
+							"}) \r",
+							"\r",
+							"pm.test(\"Response time is lees then 50ms\", () => {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(50);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Christina Berglund\",\r\n        \"age\": 25,\r\n        \"grade\": \"10th\",\r\n        \"subjects\": [\r\n            \"C++\",\r\n            \"C#\"\r\n        ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/students/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful Get request\", () => \r",
+							"    {\r",
+							"        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"    });\r",
+							"\r",
+							"pm.test(\"Content-Type header is application/json\", () => \r",
+							"    {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql\r",
+							"    ('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie 'language' is present\", () => \r",
+							"{\r",
+							"    pm.expect(pm.cookies.has(\"language\")).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie language has value 1\", () => {\r",
+							"    pm.expect(pm.cookies.get('language')).to.eql('en-gb');\r",
+							"}) \r",
+							"\r",
+							"pm.test(\"Response time is lees then 50ms\", () => {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(50);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/students/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
