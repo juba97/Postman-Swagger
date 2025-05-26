@@ -1,4 +1,4 @@
-# API Testing & Documentation
+# API Testing & Documentation  
 
 This repository contains Postman tests and Swagger documentation for practicing REST API testing and documentation workflows using public or mock APIs.
 
