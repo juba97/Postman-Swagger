@@ -1,0 +1,793 @@
+{
+	"info": {
+		"_postman_id": "762626f0-0dd1-4296-bd31-a0490448840e",
+		"name": "SpotifyAPI Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44473727",
+		"_collection_link": "https://juba-4080574.postman.co/workspace/Juba's-Workspace~ffada526-6aad-4d20-8873-b19ea055deaf/collection/44473727-762626f0-0dd1-4296-bd31-a0490448840e?action=share&source=collection_link&creator=44473727"
+	},
+	"item": [
+		{
+			"name": "Albums",
+			"item": [
+				{
+					"name": "Get Album",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Total tracks is 18\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.total_tracks).to.eql(18);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The spotify link must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.external_urls.spotify).to.match(/^https:\\/\\/.*/);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each image has all the necessary attributes\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    jsonData.images.forEach(image => {\r",
+									"        pm.expect(image).to.have.property(\"url\");\r",
+									"        pm.expect(image).to.have.property(\"height\");\r",
+									"        pm.expect(image).to.have.property(\"width\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The answer is an object and has an id\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy?market=ES",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"albums",
+								"4aawyAB9vmqN3uQ7FjRGTy"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": "ES"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Several Albums",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/albums?ids=382ObEPsp2rxGrnsizN5TX%2C1A2GTWGtFfWp7KSQTwWOyo%2C2noRn2Aes5aoNVsU6iWThc&market=ES",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"albums"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "382ObEPsp2rxGrnsizN5TX%2C1A2GTWGtFfWp7KSQTwWOyo%2C2noRn2Aes5aoNVsU6iWThc"
+								},
+								{
+									"key": "market",
+									"value": "ES"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Album Tracks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?market=ES&limit=10&offset=5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"albums",
+								"4aawyAB9vmqN3uQ7FjRGTy",
+								"tracks"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": "ES"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User's Saved Albums",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/albums?limit=10&offset=0&market=GE",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"albums"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "market",
+									"value": "GE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Albums for Current User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/albums?ids=6dVIqQ8qmQ5GBnJ9shOYGE",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"albums"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "6dVIqQ8qmQ5GBnJ9shOYGE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove User's Saved Albums",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/albums?ids=6dVIqQ8qmQ5GBnJ9shOYGE",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"albums"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "6dVIqQ8qmQ5GBnJ9shOYGE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check User's Saved Albums",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/albums/contains?ids=0SPbXR0kFRMM7BAuOXhlhl",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"albums",
+								"contains"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "0SPbXR0kFRMM7BAuOXhlhl"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get New Releases",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/browse/new-releases?limit=1&market=AR",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"browse",
+								"new-releases"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "market",
+									"value": "AR"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "redirect_uri",
+						"value": "{{SPOTIFY_CALLBACK_URL}}",
+						"type": "string"
+					},
+					{
+						"key": "clientSecret",
+						"value": "{{SPOTIFY_CLIENT_SECRET}}",
+						"type": "string"
+					},
+					{
+						"key": "clientId",
+						"value": "{{SPOTIFY_CLIENT_ID}}",
+						"type": "string"
+					},
+					{
+						"key": "refreshRequestParams",
+						"value": [],
+						"type": "any"
+					},
+					{
+						"key": "tokenRequestParams",
+						"value": [],
+						"type": "any"
+					},
+					{
+						"key": "authRequestParams",
+						"value": [],
+						"type": "any"
+					},
+					{
+						"key": "tokenName",
+						"value": "Spotify API",
+						"type": "string"
+					},
+					{
+						"key": "challengeAlgorithm",
+						"value": "S256",
+						"type": "string"
+					},
+					{
+						"key": "state",
+						"value": "optional",
+						"type": "string"
+					},
+					{
+						"key": "scope",
+						"value": "user-library-modify user-library-read user-read-private",
+						"type": "string"
+					},
+					{
+						"key": "grant_type",
+						"value": "authorization_code",
+						"type": "string"
+					},
+					{
+						"key": "authUrl",
+						"value": "https://accounts.spotify.com/authorize",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					},
+					{
+						"key": "client_authentication",
+						"value": "header",
+						"type": "string"
+					},
+					{
+						"key": "accessTokenUrl",
+						"value": "https://accounts.spotify.com/api/token",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "redirect_uri",
+				"value": "{{SPOTIFY_CALLBACK_URL}}",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{SPOTIFY_CLIENT_SECRET}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{SPOTIFY_CLIENT_ID}}",
+				"type": "string"
+			},
+			{
+				"key": "refreshRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "tokenRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "authRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "tokenName",
+				"value": "Spotify API",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "state",
+				"value": "optional",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "user-library-modify user-library-read user-read-private",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "authorization_code",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "https://accounts.spotify.com/authorize",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://accounts.spotify.com/api/token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
