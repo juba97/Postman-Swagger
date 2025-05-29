@@ -1,0 +1,233 @@
+openapi: 3.0.0
+info:
+  title: Spotify Albums API
+  description: Spotify Albums API converted from Postman collection
+  version: 1.0.0
+
+servers:
+  - url: https://api.spotify.com/v1
+
+paths:
+  /albums/{id}:
+    get:
+      summary: Get Album
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: market
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Album details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Album'
+
+  /albums:
+    get:
+      summary: Get Several Albums
+      parameters:
+        - name: ids
+          in: query
+          required: true
+          schema:
+            type: string
+            description: Comma-separated album IDs
+        - name: market
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of albums
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Album'
+
+  /albums/{id}/tracks:
+    get:
+      summary: Get Album Tracks
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: market
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Album tracks
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Track'
+
+  /me/albums:
+    get:
+      summary: Get User's Saved Albums
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: market
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of saved albums
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Album'
+
+    put:
+      summary: Save Albums for Current User
+      parameters:
+        - name: ids
+          in: query
+          required: true
+          schema:
+            type: string
+            description: Comma-separated album IDs
+      responses:
+        '200':
+          description: Albums saved
+
+    delete:
+      summary: Remove user's saved albums
+      parameters:
+        - name: ids
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Albums removed
+
+  /me/albums/contains:
+    get:
+      summary: Check user's saved albums
+      parameters:
+        - name: ids
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Check result
+
+  /browse/new-releases:
+    get:
+      summary: Get new releases
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: market
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: New releases
+
+components:
+  schemas:
+    Album:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        total_tracks:
+          type: integer
+        images:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+              height:
+                type: integer
+              width:
+                type: integer
+        album_type:
+          type: string
+        available_markets:
+          type: array
+          items:
+            type: string
+        release_date:
+          type: string
+        release_date_precision:
+          type: string
+          enum: [year, month, day]
+        external_urls:
+          type: object
+          properties:
+            spotify:
+              type: string
+        restrictions:
+          type: object
+          properties:
+            reason:
+              type: string
+              enum: [market, product, explicit]
+
+    Track:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        duration_ms:
+          type: integer
+        explicit:
+          type: boolean
+        external_urls:
+          type: object
+          properties:
+            spotify:
+              type: string
