@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "ec58e5e2-bfdc-4138-af4b-238e2530ad52",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44473727",
+		"_collection_link": "https://juba-4080574.postman.co/workspace/Juba's-Workspace~ffada526-6aad-4d20-8873-b19ea055deaf/collection/44473727-ec58e5e2-bfdc-4138-af4b-238e2530ad52?action=share&source=collection_link&creator=44473727"
+	},
+	"item": [
+		{
+			"name": "Artists",
+			"item": [
+				{
+					"name": "Get Artist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The spotify link must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.external_urls.spotify).to.match(/^https:\\/\\/.*/);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each image has all the necessary attributes\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    jsonData.images.forEach(image => {\r",
+									"        pm.expect(image).to.have.property(\"url\");\r",
+									"        pm.expect(image).to.have.property(\"height\");\r",
+									"        pm.expect(image).to.have.property(\"width\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The answer is an object and has an id\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/artists/0TnOYISbd1XYRBk9myaseg",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"artists",
+								"0TnOYISbd1XYRBk9myaseg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Several Artists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/artists?ids=2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"artists"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Artist's Albums",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/artists/0TnOYISbd1XYRBk9myaseg/albums?iclude_groups=single,appears_on&market=ES&limit=10&offset=5",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"artists",
+								"0TnOYISbd1XYRBk9myaseg",
+								"albums"
+							],
+							"query": [
+								{
+									"key": "iclude_groups",
+									"value": "single,appears_on"
+								},
+								{
+									"key": "market",
+									"value": "ES"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Artist's Top Tracks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/artists/0TnOYISbd1XYRBk9myaseg/top-tracks?market=ES",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"artists",
+								"0TnOYISbd1XYRBk9myaseg",
+								"top-tracks"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": "ES"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Available Genre",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/search?offset=0&limit=10&query=genre%3A%22rock%22&type=artist",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "query",
+									"value": "genre%3A%22rock%22"
+								},
+								{
+									"key": "type",
+									"value": "artist"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
