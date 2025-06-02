@@ -1,0 +1,408 @@
+{
+	"info": {
+		"_postman_id": "ebe9a52c-8580-4fa3-94f9-b59e9b97ac4c",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44473727",
+		"_collection_link": "https://juba-4080574.postman.co/workspace/Juba's-Workspace~ffada526-6aad-4d20-8873-b19ea055deaf/collection/44473727-ebe9a52c-8580-4fa3-94f9-b59e9b97ac4c?action=share&source=collection_link&creator=44473727"
+	},
+	"item": [
+		{
+			"name": "Episodes",
+			"item": [
+				{
+					"name": "Get Episode",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/episodes?ids=0QoXLPkqpvvTBP09uLdy6B&market=ES",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"episodes"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "0QoXLPkqpvvTBP09uLdy6B"
+								},
+								{
+									"key": "market",
+									"value": "ES"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Several Episodes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/episodes?ids=0QoXLPkqpvvTBP09uLdy6B&market=ES",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"episodes"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "0QoXLPkqpvvTBP09uLdy6B"
+								},
+								{
+									"key": "market",
+									"value": "ES"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User's Saved Episodes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/episodes?market=ES&limit=10&offset=5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"episodes"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": "ES"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Episodes for Current User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/episodes?ids=77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"episodes"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Episodes for Current User Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/episodes?ids=7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"episodes"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check User's Saved Episodes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"If there are songs in the album, it must have an image\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.total_tracks > 0) {\r",
+									"        pm.expect(jsonData.images.length).to.be.above(0);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"A compilation album must have available_markets\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.album_type === \"compilation\") {\r",
+									"        pm.expect(jsonData.available_markets).to.be.an(\"array\").that.is.not.empty;\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"release_date_format must be in the correct format\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.release_date_precision === \"year\") {\r",
+									"        pm.expect(jsonData.release_date).to.match(/^\\d{4}/);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"restrictions.reason must be a valid value\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    if (jsonData.restrictions) {\r",
+									"        pm.expect(jsonData.restrictions.reason).to.be.oneOf([\"market\", \"product\", \"explicit\"]);\r",
+									"    }\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/episodes?market=ES&limit=10&offset=5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"episodes"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": "ES"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
