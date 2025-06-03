@@ -1,0 +1,134 @@
+openapi: 3.0.0
+info:
+  title: Twilio RestAPI
+  version: 1.0.0
+servers:
+  - url: https://api.twilio.com
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+security:
+  - basicAuth: []
+tags:
+  - name: Create Message Resource
+paths:
+  /Accounts/{YourAccountSID}/.json:
+    post:
+      tags:
+        - Create Message Resource
+      summary: Send an MMS
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                To:
+                  type: string
+                  example: '{{Your_number}}'
+                From:
+                  type: string
+                  example: '{{Your_Twilio_number}}'
+                Body:
+                  type: string
+                  example: API
+                MediaUrl:
+                  type: string
+                  example: >-
+                    https://images.ctfassets.net/lzny33ho1g45/4twOSosrkx8LQxRvoVtXwb/4d2f12153f1a5ce51462c3b5a074144f/what-is-an-api.png
+      parameters:
+        - name: YourAccountSID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Create Message Resource
+      summary: Incoming Message Log
+      parameters:
+        - name: YourAccountSID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /Accounts/{YourAccountSID}/Messages/.json:
+    get:
+      tags:
+        - Create Message Resource
+      summary: Fetch a specific message
+      parameters:
+        - name: YourAccountSID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /Accounts/{YourAccountSID}/Messages/Media.json:
+    get:
+      tags:
+        - Create Message Resource
+      summary: Get Media Link
+      parameters:
+        - name: YourAccountSID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /Accounts/{YourAccountSID}/Messages/Media/:
+    get:
+      tags:
+        - Create Message Resource
+      summary: Get Media File
+      parameters:
+        - name: If-Modified-Since
+          in: header
+          schema:
+            type: string
+          example: Sat, 31 May 2025 14:53:38 GMT
+        - name: YourAccountSID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /Accounts/{YourAccountSID}/Messages.json:
+    delete:
+      tags:
+        - Create Message Resource
+      summary: Delete an SMS
+      parameters:
+        - name: YourAccountSID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
