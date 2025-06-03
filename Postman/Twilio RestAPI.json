@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "76c9dbb9-a9fc-48e8-b87a-7123576d6725",
+		"name": "Twilio RestAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44473727",
+		"_collection_link": "https://juba-4080574.postman.co/workspace/Juba's-Workspace~ffada526-6aad-4d20-8873-b19ea055deaf/collection/44473727-76c9dbb9-a9fc-48e8-b87a-7123576d6725?action=share&source=collection_link&creator=44473727"
+	},
+	"item": [
+		{
+			"name": "Create Message Resource",
+			"item": [
+				{
+					"name": "Send an SMS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "To",
+									"value": "{{Your_number}}",
+									"type": "text"
+								},
+								{
+									"key": "From",
+									"value": "{{Your_Twilio_number}}",
+									"type": "text"
+								},
+								{
+									"key": "Body",
+									"value": "Hello World",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.twilio.com/2010-04-01/Accounts/{{YourAccountSID}}/Messages.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twilio",
+								"com"
+							],
+							"path": [
+								"2010-04-01",
+								"Accounts",
+								"{{YourAccountSID}}",
+								"Messages.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Incoming Message Log",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.twilio.com/2010-04-01/Accounts/{{YourAccountSID}}/Messages.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twilio",
+								"com"
+							],
+							"path": [
+								"2010-04-01",
+								"Accounts",
+								"{{YourAccountSID}}",
+								"Messages.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch a specific message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.twilio.com/2010-04-01/Accounts/{{YourAccountSID}}/Messages/SMb04321987798fc0fc90b3d5a0e8a02f6.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twilio",
+								"com"
+							],
+							"path": [
+								"2010-04-01",
+								"Accounts",
+								"{{YourAccountSID}}",
+								"Messages",
+								"SMb04321987798fc0fc90b3d5a0e8a02f6.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send an MMS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "To",
+									"value": "{{Your_number}}",
+									"type": "text"
+								},
+								{
+									"key": "From",
+									"value": "{{Your_Twilio_number}}",
+									"type": "text"
+								},
+								{
+									"key": "Body",
+									"value": "API",
+									"type": "text"
+								},
+								{
+									"key": "MediaUrl",
+									"value": "https://images.ctfassets.net/lzny33ho1g45/4twOSosrkx8LQxRvoVtXwb/4d2f12153f1a5ce51462c3b5a074144f/what-is-an-api.png",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.twilio.com/2010-04-01/Accounts/{{YourAccountSID}}/Messages.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twilio",
+								"com"
+							],
+							"path": [
+								"2010-04-01",
+								"Accounts",
+								"{{YourAccountSID}}",
+								"Messages.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Media Link",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.twilio.com/2010-04-01/Accounts/{{YourAccountSID}}/Messages/MM9f768871aa8e1937e4cf99c9a0627580/Media.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twilio",
+								"com"
+							],
+							"path": [
+								"2010-04-01",
+								"Accounts",
+								"{{YourAccountSID}}",
+								"Messages",
+								"MM9f768871aa8e1937e4cf99c9a0627580",
+								"Media.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Media File",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "If-Modified-Since",
+								"value": "Sat, 31 May 2025 14:53:38 GMT",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api.twilio.com//2010-04-01/Accounts/{{YourAccountSID}}/Messages/MM9f768871aa8e1937e4cf99c9a0627580/Media/MEef7b871c44b8a91e9dd76b549a721b50",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twilio",
+								"com"
+							],
+							"path": [
+								"",
+								"2010-04-01",
+								"Accounts",
+								"{{YourAccountSID}}",
+								"Messages",
+								"MM9f768871aa8e1937e4cf99c9a0627580",
+								"Media",
+								"MEef7b871c44b8a91e9dd76b549a721b50"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an SMS",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.twilio.com/2010-04-01/Accounts/{{YourAccountSID}}/Messages/SM20bbff81ae30c39a569eda846a5b1a92.json",
+							"protocol": "https",
+							"host": [
+								"api",
+								"twilio",
+								"com"
+							],
+							"path": [
+								"2010-04-01",
+								"Accounts",
+								"{{YourAccountSID}}",
+								"Messages",
+								"SM20bbff81ae30c39a569eda846a5b1a92.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{Twilio_Auth_Token}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{Twilio_Account_SID}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "YourAccountSID",
+			"value": "{{Account SID}}",
+			"type": "default"
+		}
+	]
+}
