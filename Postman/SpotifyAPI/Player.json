@@ -1,0 +1,474 @@
+{
+	"info": {
+		"_postman_id": "38e54ede-4429-421e-8c87-9a06af3b07aa",
+		"name": "Player",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44473727",
+		"_collection_link": "https://juba-4080574.postman.co/workspace/Juba's-Workspace~ffada526-6aad-4d20-8873-b19ea055deaf/collection/44473727-38e54ede-4429-421e-8c87-9a06af3b07aa?action=share&source=collection_link&creator=44473727"
+	},
+	"item": [
+		{
+			"name": "Player",
+			"item": [
+				{
+					"name": "Get Available Markets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/markets",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"markets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Playback State",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player?market=ES&additional_types=track",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": "ES"
+								},
+								{
+									"key": "additional_types",
+									"value": "track"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transfer Playback",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player?device_ids=74ASZWbe4lXaubB36ztrGX",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player"
+							],
+							"query": [
+								{
+									"key": "device_ids",
+									"value": "74ASZWbe4lXaubB36ztrGX"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Available Devices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/devices",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Currently Playing Track",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/currently-playing?market=es&additional_types\n=track",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"currently-playing"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": "es"
+								},
+								{
+									"key": "additional_types\n",
+									"value": "track"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Currently Playing Track Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/play?device_id",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"play"
+							],
+							"query": [
+								{
+									"key": "device_id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pause Playback",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/pause?device_id",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"pause"
+							],
+							"query": [
+								{
+									"key": "device_id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Skip To Next",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/next?device_id",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"next"
+							],
+							"query": [
+								{
+									"key": "device_id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Skip To Previous",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/previous?device_id",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"previous"
+							],
+							"query": [
+								{
+									"key": "device_id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Seek To Position",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/seek?position_ms=25000&device_id=0d1841b0976bae2a3a310dd74c0f3df354899bc8",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"seek"
+							],
+							"query": [
+								{
+									"key": "position_ms",
+									"value": "25000"
+								},
+								{
+									"key": "device_id",
+									"value": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Repeat Mode",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/repeat?state=context",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"repeat"
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "context"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Playback Volume",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/volume?volume_percent=50",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"volume"
+							],
+							"query": [
+								{
+									"key": "volume_percent",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle Playback Shuffle",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/shuffle?state=true",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"shuffle"
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Recently Played Tracks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/recently-played?limit=10&after=1484811043508",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"recently-played"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "after",
+									"value": "1484811043508"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the User's Queue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/queue",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"queue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Item to Playback Queue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/player/queue?uri=spotify:track:4iV5W9uYEdYUVa79Axb7Rh",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"player",
+								"queue"
+							],
+							"query": [
+								{
+									"key": "uri",
+									"value": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
