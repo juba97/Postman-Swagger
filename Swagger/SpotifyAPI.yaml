@@ -1,0 +1,1308 @@
+openapi: 3.0.0
+info:
+  title: SpotifyAPI
+  version: 1.0.0
+servers:
+  - url: http://{{baseurl}}
+  - url: https://api.spotify.com
+components:
+  securitySchemes:
+    oauth2Auth:
+      type: http
+      scheme: oauth2
+security:
+  - oauth2Auth: []
+tags:
+  - name: Albums
+  - name: Artists
+  - name: Audiobooks
+  - name: Categories
+  - name: Chapters
+  - name: Episodes
+  - name: Player
+  - name: Playlists
+  - name: Shows
+  - name: Track
+  - name: Users
+paths:
+  /albums/4aawyAB9vmqN3uQ7FjRGTy:
+    get:
+      tags:
+        - Albums
+      summary: Get Album
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /albums:
+    get:
+      tags:
+        - Albums
+      summary: Get Several Albums
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /albums/4aawyAB9vmqN3uQ7FjRGTy/tracks:
+    get:
+      tags:
+        - Albums
+      summary: Get Album Tracks
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /me/albums:
+    get:
+      tags:
+        - Albums
+      summary: Get User's Saved Albums
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: GE
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Albums
+      summary: Save Albums for Current User
+      requestBody:
+        content: {}
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 6dVIqQ8qmQ5GBnJ9shOYGE
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Albums
+      summary: Remove User's Saved Albums
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 6dVIqQ8qmQ5GBnJ9shOYGE
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /me/albums/contains:
+    get:
+      tags:
+        - Albums
+      summary: Check User's Saved Albums
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 0SPbXR0kFRMM7BAuOXhlhl
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /browse/new-releases:
+    get:
+      tags:
+        - Albums
+      summary: Get New Releases
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: AR
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /artists/0TnOYISbd1XYRBk9myaseg:
+    get:
+      tags:
+        - Artists
+      summary: Get Artist
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /artists:
+    get:
+      tags:
+        - Artists
+      summary: Get Several Artists
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /artists/0TnOYISbd1XYRBk9myaseg/albums:
+    get:
+      tags:
+        - Artists
+      summary: Get Artist's Albums
+      parameters:
+        - name: iclude_groups
+          in: query
+          schema:
+            type: string
+          example: single,appears_on
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /artists/0TnOYISbd1XYRBk9myaseg/top-tracks:
+    get:
+      tags:
+        - Artists
+      summary: Get Artist's Top Tracks
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /search:
+    get:
+      tags:
+        - Artists
+      summary: Get Available Genre
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: query
+          in: query
+          schema:
+            type: string
+          example: genre:"rock"
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: artist
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /audiobooks/7iHfbu1YPACw6oZPAFJtqe:
+    get:
+      tags:
+        - Audiobooks
+      summary: Get an Audiobook
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /audiobooks:
+    get:
+      tags:
+        - Audiobooks
+      summary: Get Several Audiobooks
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /me/audiobooks:
+    get:
+      tags:
+        - Audiobooks
+      summary: Save Audiobooks for Current User
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Audiobooks
+      summary: Remove User's Saved Audiobooks
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /me/audiobooks/contains:
+    get:
+      tags:
+        - Audiobooks
+      summary: Check User's Saved Audiobooks
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/browse/categories:
+    get:
+      tags:
+        - Categories
+      summary: Get Single Browse Category
+      parameters:
+        - name: category_id
+          in: query
+          schema:
+            type: string
+          example: dinner
+        - name: locate
+          in: query
+          schema:
+            type: string
+          example: sv_SE
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/chapters:
+    get:
+      tags:
+        - Chapters
+      summary: Get Several Chapters
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/episodes:
+    get:
+      tags:
+        - Episodes
+      summary: Get Several Episodes
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 0QoXLPkqpvvTBP09uLdy6B
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/episodes:
+    get:
+      tags:
+        - Episodes
+      summary: Get User's Saved Episodes
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Episodes
+      summary: Save Episodes for Current User
+      requestBody:
+        content: {}
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Episodes
+      summary: Save Episodes for Current User Copy
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/episodes/contains:
+    get:
+      tags:
+        - Episodes
+      summary: Check User's Saved Episodes
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/markets:
+    get:
+      tags:
+        - Player
+      summary: Get Available Markets
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player:
+    get:
+      tags:
+        - Player
+      summary: Get Playback State
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+        - name: additional_types
+          in: query
+          schema:
+            type: string
+          example: track
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Player
+      summary: Transfer Playback
+      requestBody:
+        content: {}
+      parameters:
+        - name: device_ids
+          in: query
+          schema:
+            type: string
+          example: 74ASZWbe4lXaubB36ztrGX
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player/devices:
+    get:
+      tags:
+        - Player
+      summary: Get Available Devices
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player/currently-playing:
+    get:
+      tags:
+        - Player
+      summary: Get Currently Playing Track
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: es
+        - name: additional_types
+          in: query
+          schema:
+            type: string
+          example: track
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player/play:
+    put:
+      tags:
+        - Player
+      summary: Get Currently Playing Track Copy
+      requestBody:
+        content: {}
+      parameters:
+        - name: device_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player/pause:
+    put:
+      tags:
+        - Player
+      summary: Pause Playback
+      requestBody:
+        content: {}
+      parameters:
+        - name: device_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player/next:
+    post:
+      tags:
+        - Player
+      summary: Skip To Next
+      requestBody:
+        content: {}
+      parameters:
+        - name: device_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player/previous:
+    post:
+      tags:
+        - Player
+      summary: Skip To Previous
+      requestBody:
+        content: {}
+      parameters:
+        - name: device_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player/seek:
+    put:
+      tags:
+        - Player
+      summary: Seek To Position
+      requestBody:
+        content: {}
+      parameters:
+        - name: position_ms
+          in: query
+          schema:
+            type: integer
+          example: '25000'
+        - name: device_id
+          in: query
+          schema:
+            type: string
+          example: 0d1841b0976bae2a3a310dd74c0f3df354899bc8
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player/repeat:
+    put:
+      tags:
+        - Player
+      summary: Set Repeat Mode
+      requestBody:
+        content: {}
+      parameters:
+        - name: state
+          in: query
+          schema:
+            type: string
+          example: context
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player/volume:
+    put:
+      tags:
+        - Player
+      summary: Set Playback Volume
+      requestBody:
+        content: {}
+      parameters:
+        - name: volume_percent
+          in: query
+          schema:
+            type: integer
+          example: '50'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player/shuffle:
+    put:
+      tags:
+        - Player
+      summary: Toggle Playback Shuffle
+      requestBody:
+        content: {}
+      parameters:
+        - name: state
+          in: query
+          schema:
+            type: boolean
+          example: 'true'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player/recently-played:
+    get:
+      tags:
+        - Player
+      summary: Get Recently Played Tracks
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: after
+          in: query
+          schema:
+            type: integer
+          example: '1484811043508'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/player/queue:
+    get:
+      tags:
+        - Player
+      summary: Get the User's Queue
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Player
+      summary: Add Item to Playback Queue
+      requestBody:
+        content: {}
+      parameters:
+        - name: uri
+          in: query
+          schema:
+            type: string
+          example: spotify:track:4iV5W9uYEdYUVa79Axb7Rh
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/playlists/:
+    get:
+      tags:
+        - Playlists
+      summary: Get Playlist
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: 5if3zBiJcwiRA9uRW1iseU
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/playlists/5if3zBiJcwiRA9uRW1iseU:
+    put:
+      tags:
+        - Playlists
+      summary: Change Playlist Details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Playlist
+                description: Updated playlist description
+                public: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/playlists/5if3zBiJcwiRA9uRW1iseU/tracks:
+    get:
+      tags:
+        - Playlists
+      summary: Get Playlist Items
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/playlists/62T76js5GjlNxDlWLYQn3Y/tracks:
+    put:
+      tags:
+        - Playlists
+      summary: Update Playlist Items
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                range_start: 1
+                insert_before: 3
+                range_length: 2
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Playlists
+      summary: Add Items to Playlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                uris:
+                  - spotify:track:7ouMYWpwJ422jRcDASZB7P
+                  - spotify:track:1a6OTy97kk0mMdm78rHsm8
+      parameters:
+        - name: postion
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: uris
+          in: query
+          schema:
+            type: string
+          example: 09rv0DH8BPg6wHMuheaXK2
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Playlists
+      summary: Remove Playlist Items
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/playlists:
+    get:
+      tags:
+        - Playlists
+      summary: Get Current User's Playlists
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/users/5if3zBiJcwiRA9uRW1iseU/playlists:
+    get:
+      tags:
+        - Playlists
+      summary: Get User's Playlists
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/users/31zft34zhafdktu2tuwen3ydlldy/playlists:
+    post:
+      tags:
+        - Playlists
+      summary: Create Playlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: New Playlist
+                description: New playlist description
+                public: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/playlists/5if3zBiJcwiRA9uRW1iseU/images:
+    put:
+      tags:
+        - Playlists
+      summary: Add Custom Playlist Cover Image
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/search:
+    get:
+      tags:
+        - Playlists
+      summary: Search for Item
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+          example: remaster track:Doxy artist:Miles Davis
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: album
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: include_external
+          in: query
+          schema:
+            type: string
+          example: audio
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/shows/5L2ON33kXa2b7laBpCAgOI:
+    get:
+      tags:
+        - Shows
+      summary: Get Show
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/shows/:
+    get:
+      tags:
+        - Shows
+      summary: Get Several Shows
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 5L2ON33kXa2b7laBpCAgOI,5qSUyCrk9KR69lEiXbjwXM
+        - name: '?market'
+          in: query
+          schema:
+            type: string
+          example: ES
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/shows/5qSUyCrk9KR69lEiXbjwXM/episodes:
+    get:
+      tags:
+        - Shows
+      summary: Get Show Episodes
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/shows:
+    get:
+      tags:
+        - Shows
+      summary: Save Shows for Current User
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Shows
+      summary: Save Shows for Current User Copy
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/shows/contains:
+    get:
+      tags:
+        - Shows
+      summary: Check User's Saved Shows
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/tracks/11dFghVXANMlKmJXsNCbNl:
+    get:
+      tags:
+        - Track
+      summary: Get Track
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/tracks:
+    get:
+      tags:
+        - Track
+      summary: Get Several Tracks
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/tracks:
+    get:
+      tags:
+        - Track
+      summary: Get User's Saved Tracks
+      parameters:
+        - name: market
+          in: query
+          schema:
+            type: string
+          example: ES
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Track
+      summary: Save Tracks for Current User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                ids:
+                  - 6lo16FtCq94zwGQ08n27hk
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Track
+      summary: Remove User's Saved Tracks
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/tracks/contains:
+    get:
+      tags:
+        - Track
+      summary: Save Tracks for Current User Copy 3
+      parameters:
+        - name: ids
+          in: query
+          schema:
+            type: string
+          example: 7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me:
+    get:
+      tags:
+        - Users
+      summary: Get Current User's Profile
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/me/top/tracks/:
+    get:
+      tags:
+        - Users
+      summary: Get User's Top Tracks
+      parameters:
+        - name: type
+          in: query
+          schema:
+            type: string
+          example: tracks
+        - name: time_range
+          in: query
+          schema:
+            type: string
+          example: medium_term
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/users/31zft34zhafdktu2tuwen3ydlldy:
+    get:
+      tags:
+        - Users
+      summary: Get User's Profile
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/playlists/5if3zBiJcwiRA9uRW1iseU/followers:
+    put:
+      tags:
+        - Users
+      summary: Follow Playlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                public: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Users
+      summary: Unfollow Playlist
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
