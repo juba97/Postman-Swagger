@@ -3,7 +3,6 @@
     {
       "id": 1,
       "name": "John Doe",
-      
       "age": 18,
       "grade": "12th",
       "subjects": [
